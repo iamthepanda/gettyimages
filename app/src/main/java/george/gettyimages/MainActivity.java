@@ -1,17 +1,8 @@
 package george.gettyimages;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -19,33 +10,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-
 
 /*
 • Create a simple app to display images from a search term using an image search API of your choice (Getty Images, for example). Please do not use an SDK that encapsulates interaction with the chosen API, as we would like to see you demonstrate how you would design interaction with an API that is not public.
 
-• The app should include one text entry field, a button to request results and a results area to display the images in a scrolling grid. When tapping on an image, it should display full- screen.
+• The app should include one text entry field, a button to request results and a results area to display the images in a scrolling grid. When tapping on an image, it should display fullscreen.
 
 • Implement your own spelling checker that automatically corrects some user input mistakes. Do NOT use any third party code or libraries to implement the spell checker (including UITextChecker), we want to see how you write code to solve a problem, however you may use third party libraries for other parts of the app. Run your spell checker on the input word before submitting the image search requests. If multiple corrections are possible, just pick from any of them. For example, if the user types in 'ce3t', your program should return images for 'cat' even though the user mistyped the word.
 • Your spell checker should perform these specific kinds of typo corrections (and only these): - Remove non-letter characters. 'nyl;on' should auto-correct to ‘nylon'
 - Mistyped vowels. 'ceku' should auto-correct to ‘cake'
  */
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
@@ -55,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
     Button requestResults;
     GridLayout imageGrid;
 
-//    global for button access of image json array
-    JSONArray imagesJarray;
-
-    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 }else{
 //                    plugs phrase in as query
-                    new JsonTask().execute("https://api.gettyimages" +
+                    new JsonTask(MainActivity.this).execute("https://api.gettyimages" +
                             ".com:443/v3/search/images/creative?phrase=" + phrase);
 
 //                hide soft keyboard after performing search
@@ -116,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
 //    removes non-letter characters and corrects mistyped vowels
@@ -133,177 +108,21 @@ public class MainActivity extends AppCompatActivity {
             if(dictionary.wordSet.containsRegEx(word.replaceAll("[aeiou]","[aeiou]"))) {
 
 //                iterate through word list and set word equal to the first match
-                for (int i = 0; i < dictionary.wordArray.length - 1; i++) {
+                for (int i = 0; i < dictionary.wordArray.length; i++) {
                     if (word.replaceAll("[aeiou]", " ").equals(dictionary.wordArray[i].replaceAll
                             ("[aeiou]", " "))) {
                         word = dictionary.wordArray[i];
+
                         break;
                     }
                 }
             }
         }
 
+
 //        update the search field with the cleaned phrase
         textEntryField.setText(word);
 
         return word;
     }
-
-//
-    private class JsonTask extends AsyncTask<String, String, String> {
-
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            pd = new ProgressDialog(MainActivity.this);
-            pd.setMessage("Please wait");
-            pd.setCancelable(false);
-            pd.show();
-        }
-
-        protected String doInBackground(String... params) {
-            URLConnection connection;
-
-            BufferedReader reader = null;
-
-            try {
-                URL url = new URL(params[0]);
-                connection = url.openConnection();
-                connection.setRequestProperty("Api-Key","cm9cxkktahs8db3n6jqvxwas");
-                connection.connect();
-
-                InputStream stream = connection.getInputStream();
-
-                reader = new BufferedReader(new InputStreamReader(stream));
-
-                StringBuffer buffer = new StringBuffer();
-                String line = "";
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
-                }
-
-                return buffer.toString();
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            if (pd.isShowing()){
-                pd.dismiss();
-            }
-
-            extractImages(result);
-        }
-    }
-
-    public void extractImages(String result){
-        ArrayList<ImageButton> imageButtons;
-
-        JSONObject object;
-        imageButtons = new ArrayList<>();
-
-
-
-
-        try {
-
-            JSONObject imagesObject;
-            JSONArray dsJarray;
-
-            object = new JSONObject(result);
-            imagesJarray  = object.getJSONArray("images");
-
-            View.OnClickListener myListener = new View.OnClickListener(){
-                public void onClick(View v){
-                    Intent intent = new Intent(MainActivity.this, FullscreenActivity.class);
-                    try {
-                        Object tag = v.getTag();
-                        intent.putExtra("key", imagesJarray.getJSONObject((Integer)tag).getJSONArray
-                                ("display_sizes")
-                                .getJSONObject(0).get
-                                        ("uri")
-                                .toString());
-                        startActivity(intent);
-                    }catch (JSONException e){
-                        Log.e(TAG, "shits fucked",e);
-                    }
-                }
-            };
-
-            for (int i = 0; i < imagesJarray.length(); i++)
-            {
-
-                imagesObject = imagesJarray.getJSONObject(i);
-
-                dsJarray = imagesObject.getJSONArray("display_sizes");
-
-                imageButtons.add(new ImageButton(this));
-
-
-//                imageButtons.get(i).setImageResource(R.mipmap.ic_launcher);
-                imageButtons.get(i).setLayoutParams(new GridLayout.LayoutParams(
-                        GridLayout.spec(GridLayout.UNDEFINED, 1f),
-                        GridLayout.spec(GridLayout.UNDEFINED, 1f)));
-
-                imageButtons.get(i).setScaleType(ImageButton.ScaleType.CENTER_INSIDE);
-
-                imageButtons.get(i).setBackgroundColor(1);
-
-                ShapeDrawable shapedrawable = new ShapeDrawable();
-                shapedrawable.setShape(new RectShape());
-                shapedrawable.getPaint().setColor(Color.BLACK);
-                shapedrawable.getPaint().setStrokeWidth(1f);
-                shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
-                imageButtons.get(i).setBackground(shapedrawable);
-
-                imageButtons.get(i).setTag(i);
-                imageButtons.get(i).setOnClickListener(myListener);
-
-                new ImageLoadTask(dsJarray.getJSONObject(0).get("uri").toString(),
-                            imageButtons.get(i), MainActivity.this).execute();
-            }
-
-            while (!imageButtons.isEmpty()){
-                imageGrid.addView(imageButtons.get(imageButtons.size()-1));
-
-                imageButtons.remove(imageButtons.size()-1);
-            }
-
-        }catch (JSONException e){
-
-            String sb = e.toString();
-            if (sb.length() > 4000) {
-                Log.v(TAG, "sb.length = " + sb.length());
-                int chunkCount = sb.length() / 4000;     // integer division
-                for (int i = 0; i <= chunkCount; i++) {
-                    int max = 4000 * (i + 1);
-                    if (max >= sb.length()) {
-                        Log.v(TAG, "chunk " + i + " of " + chunkCount + ":" + sb.substring(4000 * i));
-                    } else {
-                        Log.v(TAG, "chunk " + i + " of " + chunkCount + ":" + sb.substring(4000 * i, max));
-                    }
-                }
-            } else {
-                Log.v(TAG, sb.toString());
-            }
-        }
-
-    }
-
 }

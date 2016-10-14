@@ -173,7 +173,7 @@ public class Words {
                 "archer\n" +
                 "architect\n" +
                 "architecture\n" +
-                "arch-rival\n" +
+                "archrival\n" +
                 "area\n" +
                 "argentina\n" +
                 "argument\n" +
@@ -185,7 +185,7 @@ public class Words {
                 "armchair\n" +
                 "armoire\n" +
                 "armor\n" +
-                "arm-rest\n" +
+                "armrest\n" +
                 "army\n" +
                 "arrival\n" +
                 "arrow\n" +
@@ -371,7 +371,6 @@ public class Words {
                 "beret\n" +
                 "berry\n" +
                 "bestseller\n" +
-                "best-seller\n" +
                 "betty\n" +
                 "beverage\n" +
                 "beyond\n" +
@@ -381,7 +380,7 @@ public class Words {
                 "bidet\n" +
                 "bifocals\n" +
                 "big\n" +
-                "big-rig\n" +
+                "bigrig\n" +
                 "bijou\n" +
                 "bike\n" +
                 "bikini\n" +
@@ -395,7 +394,7 @@ public class Words {
                 "birdbath\n" +
                 "birdcage\n" +
                 "birdhouse\n" +
-                "bird-watcher\n" +
+                "birdwatcher\n" +
                 "birth\n" +
                 "birthday\n" +
                 "bit\n" +
@@ -430,7 +429,7 @@ public class Words {
                 "boar\n" +
                 "board\n" +
                 "boat\n" +
-                "boat-building\n" +
+                "boatbuilding\n" +
                 "boatload\n" +
                 "boatyard\n" +
                 "bobcat\n" +
@@ -464,7 +463,7 @@ public class Words {
                 "bottle\n" +
                 "bottling\n" +
                 "bottom\n" +
-                "bottom-line\n" +
+                "bottomline\n" +
                 "boudoir\n" +
                 "bough\n" +
                 "boundary\n" +
@@ -522,7 +521,7 @@ public class Words {
                 "brook\n" +
                 "broom\n" +
                 "brother\n" +
-                "brother-in-law\n" +
+                "brotherinlaw\n" +
                 "brow\n" +
                 "brown\n" +
                 "brush\n" +
@@ -543,7 +542,7 @@ public class Words {
                 "bull\n" +
                 "bulldozer\n" +
                 "bullet\n" +
-                "bull-fighter\n" +
+                "bullfighter\n" +
                 "bumper\n" +
                 "bun\n" +
                 "bunch\n" +
@@ -554,7 +553,7 @@ public class Words {
                 "burlesque\n" +
                 "burma\n" +
                 "burn\n" +
-                "burn-out\n" +
+                "burnout\n" +
                 "burst\n" +
                 "bus\n" +
                 "bush\n" +
@@ -671,7 +670,7 @@ public class Words {
                 "cause\n" +
                 "caution\n" +
                 "cave\n" +
-                "c-clamp\n" +
+                "cclamp\n" +
                 "cd\n" +
                 "ceiling\n" +
                 "celebration\n" +
@@ -760,7 +759,7 @@ public class Words {
                 "chinese\n" +
                 "chino\n" +
                 "chipmunk\n" +
-                "chit-chat\n" +
+                "chitchat\n" +
                 "chivalry\n" +
                 "chive\n" +
                 "chocolate\n" +
@@ -947,9 +946,9 @@ public class Words {
                 "cooking\n" +
                 "coonskin\n" +
                 "cope\n" +
-                "cop-out\n" +
+                "copout\n" +
                 "copper\n" +
-                "co-producer\n" +
+                "coproducer\n" +
                 "copy\n" +
                 "copyright\n" +
                 "copywriter\n" +
@@ -978,7 +977,7 @@ public class Words {
                 "councilperson\n" +
                 "councilwoman\n" +
                 "counter\n" +
-                "counter-force\n" +
+                "counterforce\n" +
                 "countess\n" +
                 "country\n" +
                 "county\n" +
@@ -1034,8 +1033,8 @@ public class Words {
                 "crook\n" +
                 "crop\n" +
                 "cross\n" +
-                "cross-contamination\n" +
-                "cross-stitch\n" +
+                "crosscontamination\n" +
+                "crossstitch\n" +
                 "crotch\n" +
                 "croup\n" +
                 "crow\n" +
@@ -1049,7 +1048,7 @@ public class Words {
                 "cuban\n" +
                 "cuckoo\n" +
                 "cucumber\n" +
-                "cuff-links\n" +
+                "cufflinks\n" +
                 "cultivar\n" +
                 "cultivator\n" +
                 "culture\n" +
@@ -1327,7 +1326,7 @@ public class Words {
                 "east\n" +
                 "eave\n" +
                 "eavesdropper\n" +
-                "e-book\n" +
+                "ebook\n" +
                 "ecclesia\n" +
                 "eclipse\n" +
                 "ecliptic\n" +
@@ -1405,7 +1404,7 @@ public class Words {
                 "equinox\n" +
                 "equipment\n" +
                 "era\n" +
-                "e-reader\n" +
+                "ereader\n" +
                 "error\n" +
                 "escape\n" +
                 "espadrille\n" +
@@ -1422,7 +1421,7 @@ public class Words {
                 "europe\n" +
                 "evaluator\n" +
                 "evening\n" +
-                "evening-wear\n" +
+                "eveningwear\n" +
                 "event\n" +
                 "eviction\n" +
                 "evidence\n" +
@@ -1437,7 +1436,7 @@ public class Words {
                 "excuse\n" +
                 "executor\n" +
                 "exhaust\n" +
-                "ex-husband\n" +
+                "exhusband\n" +
                 "exile\n" +
                 "existence\n" +
                 "exit\n" +
@@ -1451,7 +1450,7 @@ public class Words {
                 "extension\n" +
                 "extent\n" +
                 "extreme\n" +
-                "ex-wife\n" +
+                "exwife\n" +
                 "eye\n" +
                 "eyeball\n" +
                 "eyebrow\n" +
@@ -1477,20 +1476,20 @@ public class Words {
                 "fairies\n" +
                 "fairy\n" +
                 "fall\n" +
-                "falling-out\n" +
+                "fallingout\n" +
                 "familiar\n" +
                 "family\n" +
                 "fan\n" +
                 "fang\n" +
                 "fanlight\n" +
                 "fanny\n" +
-                "fanny-pack\n" +
+                "fannypack\n" +
                 "farm\n" +
                 "farmer\n" +
                 "fascia\n" +
                 "fat\n" +
                 "father\n" +
-                "father-in-law\n" +
+                "fatherinlaw\n" +
                 "fatigues\n" +
                 "faucet\n" +
                 "fault\n" +
@@ -1568,7 +1567,7 @@ public class Words {
                 "flesh\n" +
                 "flight\n" +
                 "flintlock\n" +
-                "flip-flops\n" +
+                "flipflops\n" +
                 "flock\n" +
                 "flood\n" +
                 "floor\n" +
@@ -1593,7 +1592,7 @@ public class Words {
                 "football\n" +
                 "footnote\n" +
                 "footrest\n" +
-                "foot-rest\n" +
+                "footrest\n" +
                 "footstool\n" +
                 "foray\n" +
                 "force\n" +
@@ -1665,7 +1664,7 @@ public class Words {
                 "gaffer\n" +
                 "gaiters\n" +
                 "gale\n" +
-                "gall-bladder\n" +
+                "gallbladder\n" +
                 "galleon\n" +
                 "gallery\n" +
                 "galley\n" +
@@ -1673,7 +1672,7 @@ public class Words {
                 "galoshes\n" +
                 "game\n" +
                 "gamebird\n" +
-                "gamma-ray\n" +
+                "gammaray\n" +
                 "gander\n" +
                 "gap\n" +
                 "garage\n" +
@@ -1743,7 +1742,7 @@ public class Words {
                 "gobbler\n" +
                 "godmother\n" +
                 "goggles\n" +
-                "go-kart\n" +
+                "gokart\n" +
                 "gold\n" +
                 "goldfish\n" +
                 "golf\n" +
@@ -1751,18 +1750,18 @@ public class Words {
                 "gong\n" +
                 "good\n" +
                 "goodbye\n" +
-                "good-bye\n" +
+                "goodbye\n" +
                 "goodie\n" +
                 "goose\n" +
                 "gopher\n" +
-                "gore-tex\n" +
+                "goretex\n" +
                 "gorilla\n" +
                 "gosling\n" +
                 "governance\n" +
                 "government\n" +
                 "governor\n" +
                 "gown\n" +
-                "grab-bag\n" +
+                "grabbag\n" +
                 "grade\n" +
                 "grain\n" +
                 "gram\n" +
@@ -1782,8 +1781,8 @@ public class Words {
                 "gray\n" +
                 "grease\n" +
                 "great\n" +
-                "great-grandfather\n" +
-                "great-grandmother\n" +
+                "greatgrandfather\n" +
+                "greatgrandmother\n" +
                 "greece\n" +
                 "greek\n" +
                 "green\n" +
@@ -1825,8 +1824,8 @@ public class Words {
                 "hair\n" +
                 "haircut\n" +
                 "half\n" +
-                "half-brother\n" +
-                "half-sister\n" +
+                "halfbrother\n" +
+                "halfsister\n" +
                 "halibut\n" +
                 "hall\n" +
                 "hallway\n" +
@@ -1837,7 +1836,7 @@ public class Words {
                 "hamster\n" +
                 "hand\n" +
                 "handball\n" +
-                "hand-holding\n" +
+                "handholding\n" +
                 "handicap\n" +
                 "handle\n" +
                 "handlebar\n" +
@@ -1850,7 +1849,7 @@ public class Words {
                 "hardcover\n" +
                 "hardening\n" +
                 "hardhat\n" +
-                "hard-hat\n" +
+                "hardhat\n" +
                 "hardware\n" +
                 "harm\n" +
                 "harmonica\n" +
@@ -1877,7 +1876,7 @@ public class Words {
                 "heartache\n" +
                 "hearth\n" +
                 "hearthside\n" +
-                "heart-throb\n" +
+                "heartthrob\n" +
                 "heartwood\n" +
                 "heat\n" +
                 "heater\n" +
@@ -1906,7 +1905,7 @@ public class Words {
                 "hide\n" +
                 "high\n" +
                 "highlight\n" +
-                "high-rise\n" +
+                "highrise\n" +
                 "highway\n" +
                 "hill\n" +
                 "himalayan\n" +
@@ -1949,7 +1948,7 @@ public class Words {
                 "hostel\n" +
                 "hostess\n" +
                 "hot\n" +
-                "hot-dog\n" +
+                "hotdog\n" +
                 "hotel\n" +
                 "hour\n" +
                 "hourglass\n" +
@@ -1987,7 +1986,7 @@ public class Words {
                 "ice\n" +
                 "icebreaker\n" +
                 "icecream\n" +
-                "ice-cream\n" +
+                "icecream\n" +
                 "icicle\n" +
                 "icon\n" +
                 "idea\n" +
@@ -2028,10 +2027,10 @@ public class Words {
                 "ingrate\n" +
                 "initial\n" +
                 "initiative\n" +
-                "in-joke\n" +
+                "injoke\n" +
                 "injury\n" +
                 "ink\n" +
-                "in-laws\n" +
+                "inlaws\n" +
                 "inlay\n" +
                 "inn\n" +
                 "innervation\n" +
@@ -2159,7 +2158,7 @@ public class Words {
                 "keyboarding\n" +
                 "keystone\n" +
                 "kick\n" +
-                "kick-off\n" +
+                "kickoff\n" +
                 "kid\n" +
                 "kidney\n" +
                 "kidneys\n" +
@@ -2185,7 +2184,7 @@ public class Words {
                 "kneejerk\n" +
                 "knickers\n" +
                 "knife\n" +
-                "knife-edge\n" +
+                "knifeedge\n" +
                 "knight\n" +
                 "knitting\n" +
                 "knot\n" +
@@ -2356,7 +2355,7 @@ public class Words {
                 "mailman\n" +
                 "maintenance\n" +
                 "major\n" +
-                "major-league\n" +
+                "majorleague\n" +
                 "makeup\n" +
                 "malaysia\n" +
                 "male\n" +
@@ -2463,7 +2462,7 @@ public class Words {
                 "michelle\n" +
                 "microlending\n" +
                 "microwave\n" +
-                "mid-course\n" +
+                "midcourse\n" +
                 "middle\n" +
                 "middleman\n" +
                 "midi\n" +
@@ -2485,10 +2484,10 @@ public class Words {
                 "mini\n" +
                 "minibus\n" +
                 "minion\n" +
-                "mini-skirt\n" +
+                "miniskirt\n" +
                 "minister\n" +
                 "minor\n" +
-                "minor-league\n" +
+                "minorleague\n" +
                 "mint\n" +
                 "minute\n" +
                 "mirror\n" +
@@ -2546,7 +2545,7 @@ public class Words {
                 "motel\n" +
                 "moth\n" +
                 "mother\n" +
-                "mother-in-law\n" +
+                "motherinlaw\n" +
                 "motion\n" +
                 "motor\n" +
                 "motorboat\n" +
@@ -2573,9 +2572,9 @@ public class Words {
                 "musculature\n" +
                 "museum\n" +
                 "music\n" +
-                "music-box\n" +
+                "musicbox\n" +
                 "musician\n" +
-                "music-making\n" +
+                "musicmaking\n" +
                 "mustache\n" +
                 "mustard\n" +
                 "mutt\n" +
@@ -2687,7 +2686,7 @@ public class Words {
                 "offer\n" +
                 "office\n" +
                 "official\n" +
-                "off-ramp\n" +
+                "offramp\n" +
                 "oil\n" +
                 "okra\n" +
                 "oldie\n" +
@@ -2859,7 +2858,7 @@ public class Words {
                 "pediatrician\n" +
                 "peen\n" +
                 "peer\n" +
-                "peer-to-peer\n" +
+                "peertopeer\n" +
                 "pegboard\n" +
                 "pelican\n" +
                 "pelt\n" +
@@ -2933,7 +2932,7 @@ public class Words {
                 "pimple\n" +
                 "pin\n" +
                 "pinafore\n" +
-                "pince-nez\n" +
+                "pincenez\n" +
                 "pine\n" +
                 "pineapple\n" +
                 "pinecone\n" +
@@ -2986,7 +2985,7 @@ public class Words {
                 "pneumonia\n" +
                 "pocket\n" +
                 "pocketbook\n" +
-                "pocket-watch\n" +
+                "pocketwatch\n" +
                 "poem\n" +
                 "poet\n" +
                 "poetry\n" +
@@ -3087,7 +3086,7 @@ public class Words {
                 "project\n" +
                 "promotion\n" +
                 "prompt\n" +
-                "proof-reader\n" +
+                "proofreader\n" +
                 "propane\n" +
                 "property\n" +
                 "proposal\n" +
@@ -3309,7 +3308,7 @@ public class Words {
                 "rock\n" +
                 "rocker\n" +
                 "rocket\n" +
-                "rocket-ship\n" +
+                "rocketship\n" +
                 "rod\n" +
                 "role\n" +
                 "roll\n" +
@@ -3422,7 +3421,7 @@ public class Words {
                 "screenwriting\n" +
                 "screw\n" +
                 "screwdriver\n" +
-                "screw-up\n" +
+                "screwup\n" +
                 "scrim\n" +
                 "scrip\n" +
                 "sculpting\n" +
@@ -3505,7 +3504,7 @@ public class Words {
                 "shock\n" +
                 "shoe\n" +
                 "shoehorn\n" +
-                "shoe-horn\n" +
+                "shoehorn\n" +
                 "shoelace\n" +
                 "shoemaker\n" +
                 "shoes\n" +
@@ -3525,7 +3524,7 @@ public class Words {
                 "shovel\n" +
                 "show\n" +
                 "shower\n" +
-                "show-stopper\n" +
+                "showstopper\n" +
                 "shred\n" +
                 "shrimp\n" +
                 "shrine\n" +
@@ -3557,7 +3556,7 @@ public class Words {
                 "sink\n" +
                 "sir\n" +
                 "sister\n" +
-                "sister-in-law\n" +
+                "sisterinlaw\n" +
                 "sit\n" +
                 "sitar\n" +
                 "situation\n" +
@@ -3733,7 +3732,7 @@ public class Words {
                 "state\n" +
                 "statement\n" +
                 "station\n" +
-                "station-wagon\n" +
+                "stationwagon\n" +
                 "statistic\n" +
                 "statistician\n" +
                 "steak\n" +
@@ -3745,21 +3744,21 @@ public class Words {
                 "stem\n" +
                 "stencil\n" +
                 "step\n" +
-                "step-aunt\n" +
-                "step-brother\n" +
+                "stepaunt\n" +
+                "stepbrother\n" +
                 "stepdaughter\n" +
-                "step-daughter\n" +
-                "step-father\n" +
-                "step-grandfather\n" +
-                "step-grandmother\n" +
+                "stepdaughter\n" +
+                "stepfather\n" +
+                "stepgrandfather\n" +
+                "stepgrandmother\n" +
                 "stepmother\n" +
-                "step-mother\n" +
-                "stepping-stone\n" +
+                "stepmother\n" +
+                "steppingstone\n" +
                 "steps\n" +
-                "step-sister\n" +
+                "stepsister\n" +
                 "stepson\n" +
-                "step-son\n" +
-                "step-uncle\n" +
+                "stepson\n" +
+                "stepuncle\n" +
                 "steven\n" +
                 "stew\n" +
                 "stick\n" +
@@ -3770,7 +3769,7 @@ public class Words {
                 "stock\n" +
                 "stocking\n" +
                 "stockings\n" +
-                "stock-in-trade\n" +
+                "stockintrade\n" +
                 "stole\n" +
                 "stomach\n" +
                 "stone\n" +
@@ -3785,7 +3784,7 @@ public class Words {
                 "storm\n" +
                 "story\n" +
                 "storyboard\n" +
-                "story-telling\n" +
+                "storytelling\n" +
                 "stove\n" +
                 "strait\n" +
                 "stranger\n" +
@@ -3907,13 +3906,13 @@ public class Words {
                 "tam\n" +
                 "tambour\n" +
                 "tambourine\n" +
-                "tam-o'-shanter\n" +
+                "tamo'shanter\n" +
                 "tandem\n" +
                 "tangerine\n" +
                 "tank\n" +
                 "tanker\n" +
                 "tankful\n" +
-                "tank-top\n" +
+                "tanktop\n" +
                 "tanzania\n" +
                 "tap\n" +
                 "target\n" +
@@ -4030,7 +4029,7 @@ public class Words {
                 "tomato\n" +
                 "tomography\n" +
                 "tomorrow\n" +
-                "tom-tom\n" +
+                "tomtom\n" +
                 "ton\n" +
                 "tongue\n" +
                 "toot\n" +
@@ -4039,7 +4038,7 @@ public class Words {
                 "toothpaste\n" +
                 "toothpick\n" +
                 "top\n" +
-                "top-hat\n" +
+                "tophat\n" +
                 "topic\n" +
                 "topsail\n" +
                 "toque\n" +
@@ -4054,14 +4053,14 @@ public class Words {
                 "tote\n" +
                 "touch\n" +
                 "tough\n" +
-                "tough-guy\n" +
+                "toughguy\n" +
                 "tour\n" +
                 "tourist\n" +
                 "towel\n" +
                 "tower\n" +
                 "town\n" +
                 "townhouse\n" +
-                "tow-truck\n" +
+                "towtruck\n" +
                 "toy\n" +
                 "trachoma\n" +
                 "track\n" +
@@ -4119,7 +4118,7 @@ public class Words {
                 "trust\n" +
                 "truth\n" +
                 "try\n" +
-                "t-shirt\n" +
+                "tshirt\n" +
                 "tsunami\n" +
                 "tub\n" +
                 "tuba\n" +
@@ -4130,7 +4129,7 @@ public class Words {
                 "tummy\n" +
                 "tuna\n" +
                 "tune\n" +
-                "tune-up\n" +
+                "tuneup\n" +
                 "tunic\n" +
                 "tunnel\n" +
                 "turban\n" +
@@ -4271,7 +4270,7 @@ public class Words {
                 "war\n" +
                 "warden\n" +
                 "warlock\n" +
-                "warm-up\n" +
+                "warmup\n" +
                 "warning\n" +
                 "wash\n" +
                 "washbasin\n" +
@@ -4311,7 +4310,7 @@ public class Words {
                 "well\n" +
                 "west\n" +
                 "western\n" +
-                "wet-bar\n" +
+                "wetbar\n" +
                 "wetsuit\n" +
                 "whale\n" +
                 "wharf\n" +
@@ -4334,7 +4333,7 @@ public class Words {
                 "willow\n" +
                 "wind\n" +
                 "windage\n" +
-                "wind-chime\n" +
+                "windchime\n" +
                 "window\n" +
                 "windscreen\n" +
                 "windshield\n" +
@@ -4349,7 +4348,7 @@ public class Words {
                 "wish\n" +
                 "wisteria\n" +
                 "witch\n" +
-                "witch-hunt\n" +
+                "witchhunt\n" +
                 "withdrawal\n" +
                 "witness\n" +
                 "wolf\n" +
@@ -4414,7 +4413,7 @@ public class Words {
                 "zoo\n" +
                 "zoologist\n" +
                 "zoology\n" +
-                "zoot-suit\n" +
+                "zootsuit\n" +
                 "zucchini";
 
 
@@ -4422,7 +4421,7 @@ public class Words {
 
         wordSet = new RegExHashSet();
 
-        for(int i = 0; i<wordArray.length-1;i++){
+        for(int i = 0; i < wordArray.length; i++){
             wordSet.add(wordArray[i]);
         }
     }

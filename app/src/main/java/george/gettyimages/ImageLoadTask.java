@@ -20,7 +20,6 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     private ImageButton imageView;
 
     Activity activity;
-    ProgressDialog pd;
 
     public ImageLoadTask(String url, ImageButton imageView, Activity activity) {
         this.url = url;
@@ -31,10 +30,7 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pd = new ProgressDialog(activity);
-        pd.setMessage("Please wait");
-        pd.setCancelable(false);
-        pd.show();
+
     }
 
     @Override
@@ -57,8 +53,8 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap result) {
         super.onPostExecute(result);
-        if (pd.isShowing()){
-            pd.dismiss();
+        if (JsonTask.pd.isShowing()){
+            JsonTask.pd.dismiss();
         }
         imageView.setImageBitmap(result);
     }
