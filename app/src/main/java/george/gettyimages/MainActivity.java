@@ -157,9 +157,22 @@ public class MainActivity extends AppCompatActivity {
         word =  word.replaceAll("[^a-zA-Z]", "");
 
         Words dictionary =new Words();
-        if(dictionary.wordSet.contains("cake")){
-            System.out.println("we has cake");
+        if(dictionary.wordSet.containsRegEx(word)){
+        }else{
+            if(dictionary.wordSet.containsRegEx(word.replaceAll("[aeiou]","[aeiou]"))) {
+                for (int i = 0; i < dictionary.wordArray.length - 1; i++) {
+                    if (word.replaceAll("[aeiou]", " ").equals(dictionary.wordArray[i].replaceAll
+                            ("[aeiou]", " "))) {
+                        word = dictionary.wordArray[i];
+                        break;
+                    }
+                }
+
+                System.out.println("we has " + word);
+            }
         }
+
+        textEntryField.setText(word);
 
         return word;
     }

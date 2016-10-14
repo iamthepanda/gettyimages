@@ -13,7 +13,7 @@ public class Words {
 
     public String[] wordArray;
 
-    public static HashSet<String> wordSet;
+    public static RegExHashSet wordSet;
     Words(){
         words = "aardvark\n" +
                 "abacus\n" +
@@ -4420,10 +4420,21 @@ public class Words {
 
         wordArray = words.split("\n");
 
-        wordSet = new HashSet<>();
+        wordSet = new RegExHashSet();
 
         for(int i = 0; i<wordArray.length-1;i++){
             wordSet.add(wordArray[i]);
+        }
+    }
+
+    public class RegExHashSet extends HashSet<String > {
+        public boolean containsRegEx( String regex ) {
+            for( String string : this ) {
+                if( string.matches( regex ) ) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
