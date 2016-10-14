@@ -32,6 +32,8 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,7 +41,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 /*
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String phrase = textEntryField.getText().toString();
 
-                phrase.replaceAll("\\s","%20");
+                phrase = spellchecker(phrase);
 
                 if(phrase.matches("")){
                     Toast.makeText(MainActivity.this, "Please provide a search phrase",
@@ -148,6 +149,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public String spellchecker(String word){
+
+//        remove non-letter characters
+        word =  word.replaceAll("[^a-zA-Z]", "");
+
+        Words dictionary =new Words();
+        if(dictionary.wordSet.contains("cake")){
+            System.out.println("we has cake");
+        }
+
+        return word;
     }
 
     ProgressDialog pd;
@@ -182,8 +196,6 @@ public class MainActivity extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-
                 }
 
                 return buffer.toString();
@@ -280,8 +292,6 @@ public class MainActivity extends AppCompatActivity {
                 imageButtons.get(i).setOnClickListener(myListener);
 
 
-
-                System.out.println(dsJarray.length());
                 for (int j = 0; j < dsJarray.length(); j++)
                 {
                     dsObject =dsJarray.getJSONObject(j);
@@ -289,7 +299,6 @@ public class MainActivity extends AppCompatActivity {
                     new ImageLoadTask(dsJarray.getJSONObject(j).get("uri").toString(),
                             imageButtons.get(i))
                             .execute();
-                    System.out.println(dsObject.get("uri"));
                 }
             }
 
