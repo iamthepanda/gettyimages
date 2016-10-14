@@ -1,5 +1,7 @@
 package george.gettyimages;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -17,9 +19,22 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     private String url;
     private ImageButton imageView;
 
-    public ImageLoadTask(String url, ImageButton imageView) {
+    Activity activity;
+    ProgressDialog pd;
+
+    public ImageLoadTask(String url, ImageButton imageView, Activity activity) {
         this.url = url;
         this.imageView = imageView;
+        this.activity = activity;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        pd = new ProgressDialog(activity);
+        pd.setMessage("Please wait");
+        pd.setCancelable(false);
+        pd.show();
     }
 
     @Override
@@ -42,6 +57,9 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap result) {
         super.onPostExecute(result);
+        if (pd.isShowing()){
+            pd.dismiss();
+        }
         imageView.setImageBitmap(result);
     }
 

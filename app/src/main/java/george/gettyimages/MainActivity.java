@@ -4,12 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -56,18 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    //    declare variables for xml elements
+    //    declare variables for existing xml elements
     EditText textEntryField;
     Button requestResults;
     GridLayout imageGrid;
-    ArrayList<ImageButton> imageButtons;
 
-    JSONObject object;
+//    global for button access of image json array
     JSONArray imagesJarray;
 
-    String globalResults;
-
-    int x = -1;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,25 +69,6 @@ public class MainActivity extends AppCompatActivity {
         textEntryField = (EditText) findViewById(R.id.text_entry_field);
         requestResults = (Button) findViewById(R.id.request_results);
         imageGrid = (GridLayout) findViewById(R.id.image_grid);
-    }
-
-    //    TODO: for testing purposes. remove before submitting challenge
-    public void refreshActivity(View v){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
-    }
-
-    public void displayImages(){
-
-//        createDummyImages();
-
-//        display entire list of image buttons
-//        while (!imageButtons.isEmpty()){
-//            imageGrid.addView(imageButtons.get(imageButtons.size()-1));
-//
-//            imageButtons.remove(imageButtons.size()-1);
-//        }
     }
 
     @Override
@@ -122,44 +94,45 @@ public class MainActivity extends AppCompatActivity {
 //                grab images and display them
 
 
+//                grab the user's search phrase from the text entry box
                 String phrase = textEntryField.getText().toString();
 
                 phrase = spellchecker(phrase);
 
+//                make api call only if search field is not empty
                 if(phrase.matches("")){
                     Toast.makeText(MainActivity.this, "Please provide a search phrase",
                             Toast.LENGTH_LONG).show();
                 }else{
+//                    plugs phrase in as query
                     new JsonTask().execute("https://api.gettyimages" +
-                            ".com:443/v3/search/images/creative?phrase="+phrase);
-
-
-
-                    displayImages();
+                            ".com:443/v3/search/images/creative?phrase=" + phrase);
 
 //                hide soft keyboard after performing search
                     InputMethodManager inputManager = (InputMethodManager)
                             getSystemService(Context.INPUT_METHOD_SERVICE);
-
                     inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                             InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-
-
-
             }
         });
     }
 
+//    removes non-letter characters and corrects mistyped vowels
     public String spellchecker(String word){
-
 //        remove non-letter characters
         word =  word.replaceAll("[^a-zA-Z]", "");
 
-        Words dictionary =new Words();
-        if(dictionary.wordSet.containsRegEx(word)){
-        }else{
+//        initialize word list
+        Words dictionary = new Words();
+
+//        only perform vowel correction if mistyped word is not in the dictionary
+        if(!dictionary.wordSet.contains(word)){
+
+//            match mistyped word to word in the word list using regex
             if(dictionary.wordSet.containsRegEx(word.replaceAll("[aeiou]","[aeiou]"))) {
+
+//                iterate through word list and set word equal to the first match
                 for (int i = 0; i < dictionary.wordArray.length - 1; i++) {
                     if (word.replaceAll("[aeiou]", " ").equals(dictionary.wordArray[i].replaceAll
                             ("[aeiou]", " "))) {
@@ -167,18 +140,16 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                 }
-
-                System.out.println("we has " + word);
             }
         }
 
+//        update the search field with the cleaned phrase
         textEntryField.setText(word);
 
         return word;
     }
 
-    ProgressDialog pd;
-
+//
     private class JsonTask extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
@@ -192,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected String doInBackground(String... params) {
             URLConnection connection;
+
             BufferedReader reader = null;
 
             try {
@@ -240,10 +212,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void extractImages(String result){
-        globalResults = result;
+        ArrayList<ImageButton> imageButtons;
 
+        JSONObject object;
         imageButtons = new ArrayList<>();
 
 
@@ -253,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
 
             JSONObject imagesObject;
             JSONArray dsJarray;
-            JSONObject dsObject;
 
             object = new JSONObject(result);
             imagesJarray  = object.getJSONArray("images");
@@ -285,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 imageButtons.add(new ImageButton(this));
 
 
-                imageButtons.get(i).setImageResource(R.mipmap.ic_launcher);
+//                imageButtons.get(i).setImageResource(R.mipmap.ic_launcher);
                 imageButtons.get(i).setLayoutParams(new GridLayout.LayoutParams(
                         GridLayout.spec(GridLayout.UNDEFINED, 1f),
                         GridLayout.spec(GridLayout.UNDEFINED, 1f)));
@@ -304,15 +275,8 @@ public class MainActivity extends AppCompatActivity {
                 imageButtons.get(i).setTag(i);
                 imageButtons.get(i).setOnClickListener(myListener);
 
-
-                for (int j = 0; j < dsJarray.length(); j++)
-                {
-                    dsObject =dsJarray.getJSONObject(j);
-
-                    new ImageLoadTask(dsJarray.getJSONObject(j).get("uri").toString(),
-                            imageButtons.get(i))
-                            .execute();
-                }
+                new ImageLoadTask(dsJarray.getJSONObject(0).get("uri").toString(),
+                            imageButtons.get(i), MainActivity.this).execute();
             }
 
             while (!imageButtons.isEmpty()){

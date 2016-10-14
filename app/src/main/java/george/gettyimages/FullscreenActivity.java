@@ -119,8 +119,7 @@ public class FullscreenActivity extends AppCompatActivity {
 //            imageView.setImageResource(value);
 
 
-            new ImageLoadTask(value, imageView)
-                    .execute();
+            new ImageLoadTask(value, imageView, FullscreenActivity.this).execute();
         }
 
     }
