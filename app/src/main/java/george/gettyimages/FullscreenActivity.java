@@ -8,14 +8,13 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class FullscreenActivity extends AppCompatActivity {
-    ImageButton imageView;
+    ImageButton imageButton;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -97,7 +96,7 @@ public class FullscreenActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        imageView = (ImageButton) findViewById(R.id.fullscreen_content);
+        imageButton = (ImageButton) findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -112,14 +111,12 @@ public class FullscreenActivity extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.back_button).setOnTouchListener(mDelayHideTouchListener);
 
+//        receive uri from main activity and load the image
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("key");
-            //The key argument here must match that used in the other activity
-//            imageView.setImageResource(value);
 
-
-            new ImageLoadTask(value, imageView, FullscreenActivity.this).execute();
+            new ImageLoadTask(value, imageButton, FullscreenActivity.this).execute();
         }
 
     }

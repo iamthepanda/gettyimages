@@ -2,20 +2,14 @@ package george.gettyimages;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,16 +23,18 @@ import java.util.ArrayList;
  * Created by george on 10/14/16.
  */
 
-public class JsonTask extends AsyncTask<String, String, String> {
+class JsonTask extends AsyncTask<String, String, String> {
 
     static ProgressDialog pd;
-    MainActivity activity;
+    private MainActivity activity;
 
-    static JSONArray imagesJarray;
+    private static JSONArray imagesJarray;
+
+    private static ArrayList<ImageButton> imageButtons;
     //    global for button access of image json array
-    View.OnClickListener imageButtonListener;
+    private View.OnClickListener imageButtonListener;
 
-    public JsonTask(MainActivity activity){
+    JsonTask(MainActivity activity){
         this.activity = activity;
     }
 
@@ -73,23 +69,26 @@ public class JsonTask extends AsyncTask<String, String, String> {
         };
     }
 
+//    connect to api in the background
     protected String doInBackground(String... params) {
         URLConnection connection;
-
         BufferedReader reader = null;
 
         try {
             URL url = new URL(params[0]);
             connection = url.openConnection();
+
+//            send api key
             connection.setRequestProperty("Api-Key","cm9cxkktahs8db3n6jqvxwas");
             connection.connect();
 
+//            get json response stream and return as json string
             InputStream stream = connection.getInputStream();
 
             reader = new BufferedReader(new InputStreamReader(stream));
 
-            StringBuffer buffer = new StringBuffer();
-            String line = "";
+            StringBuilder buffer = new StringBuilder();
+            String line;
 
             while ((line = reader.readLine()) != null) {
                 buffer.append(line+"\n");
@@ -117,60 +116,44 @@ public class JsonTask extends AsyncTask<String, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
+//        get images and post them after receiving api response
         extractImages(result);
     }
 
     //    obtains image uri from json and sets them to imagebuttons
-    public void extractImages(String result){
-        ArrayList<ImageButton> imageButtons;
-
-        JSONObject object;
-        JSONObject imagesObject;
-        JSONArray dsJarray;
+    private void extractImages(String result){
         imageButtons = new ArrayList<>();
 
-        try {
-            object = new JSONObject(result);
-            imagesJarray  = object.getJSONArray("images");
+        JSONObject jsonObject;
+        JSONArray displaySizesJarray;
+        String uri;
 
+        try {
+            jsonObject = new JSONObject(result);
+
+//            array holds display_sizes array, which holds the uri
+            imagesJarray  = jsonObject.getJSONArray("images");
+
+//            grab uri associated with each image in the image array
             for (int i = 0; i < imagesJarray.length(); i++)
             {
-                imagesObject = imagesJarray.getJSONObject(i);
+                createImageButtons(i);
 
-                dsJarray = imagesObject.getJSONArray("display_sizes");
+                displaySizesJarray = imagesJarray.getJSONObject(i).getJSONArray("display_sizes");
+                uri = displaySizesJarray.getJSONObject(0).get("uri").toString();
 
-                imageButtons.add(new ImageButton(activity));
-
-                imageButtons.get(i).setLayoutParams(new GridLayout.LayoutParams(
-                        GridLayout.spec(GridLayout.UNDEFINED, 1f),
-                        GridLayout.spec(GridLayout.UNDEFINED, 1f)));
-
-                imageButtons.get(i).setScaleType(ImageButton.ScaleType.CENTER_INSIDE);
-
-                imageButtons.get(i).setBackgroundColor(1);
-
-                ShapeDrawable shapedrawable = new ShapeDrawable();
-                shapedrawable.setShape(new RectShape());
-                shapedrawable.getPaint().setColor(Color.BLACK);
-                shapedrawable.getPaint().setStrokeWidth(1f);
-                shapedrawable.getPaint().setStyle(Paint.Style.STROKE);
-                imageButtons.get(i).setBackground(shapedrawable);
-
-                imageButtons.get(i).setTag(i);
-                imageButtons.get(i).setOnClickListener(imageButtonListener);
-
-                new ImageLoadTask(dsJarray.getJSONObject(0).get("uri").toString(),
-                        imageButtons.get(i), activity).execute();
+//                load the image to its corresponding image button
+                new ImageLoadTask(uri, imageButtons.get(i), activity).execute();
             }
 
+//            populate grid with images
             while (!imageButtons.isEmpty()){
                 activity.imageGrid.addView(imageButtons.get(0));
 
                 imageButtons.remove(0);
             }
-
         }catch (JSONException e){
-
+//            break up error message to work around logcat truncating them
             String sb = e.toString();
             if (sb.length() > 4000) {
                 Log.v(activity.TAG, "sb.length = " + sb.length());
@@ -188,5 +171,17 @@ public class JsonTask extends AsyncTask<String, String, String> {
             }
         }
 
+    }
+
+    private void createImageButtons(int i) {
+        imageButtons.add(new ImageButton(activity));
+
+        imageButtons.get(i).setLayoutParams(new GridLayout.LayoutParams(
+                GridLayout.spec(GridLayout.UNDEFINED, 1f),
+                GridLayout.spec(GridLayout.UNDEFINED, 1f)));
+        imageButtons.get(i).setScaleType(ImageButton.ScaleType.CENTER_INSIDE);
+        imageButtons.get(i).setBackgroundColor(1);
+        imageButtons.get(i).setTag(i);
+        imageButtons.get(i).setOnClickListener(imageButtonListener);
     }
 }

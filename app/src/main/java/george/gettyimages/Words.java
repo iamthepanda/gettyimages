@@ -8,12 +8,13 @@ import java.util.HashSet;
  */
 
 public class Words {
+
     public String words;
-
-
     public String[] wordArray;
 
+    //    regex hash set allows for custom contains method that uses regex
     public static RegExHashSet wordSet;
+
     Words(){
         words = "aardvark\n" +
                 "abacus\n" +
@@ -4416,16 +4417,17 @@ public class Words {
                 "zootsuit\n" +
                 "zucchini";
 
-
+//        create word array from string of words
         wordArray = words.split("\n");
 
+//        create word hash set using array of words
         wordSet = new RegExHashSet();
-
         for(int i = 0; i < wordArray.length; i++){
             wordSet.add(wordArray[i]);
         }
     }
 
+//    new contains method can match regexs
     public class RegExHashSet extends HashSet<String > {
         public boolean containsRegEx( String regex ) {
             for( String string : this ) {
