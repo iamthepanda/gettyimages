@@ -1,15 +1,8 @@
 package george.gettyimages;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.UserDictionary;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -17,20 +10,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-/*
-• Create a simple app to display images from a search term using an image search API of your choice (Getty Images, for example). Please do not use an SDK that encapsulates interaction with the chosen API, as we would like to see you demonstrate how you would design interaction with an API that is not public.
-
-• The app should include one text entry field, a button to request results and a results area to display the images in a scrolling grid. When tapping on an image, it should display fullscreen.
-
-• Implement your own spelling checker that automatically corrects some user input mistakes. Do NOT use any third party code or libraries to implement the spell checker (including UITextChecker), we want to see how you write code to solve a problem, however you may use third party libraries for other parts of the app. Run your spell checker on the input word before submitting the image search requests. If multiple corrections are possible, just pick from any of them. For example, if the user types in 'ce3t', your program should return images for 'cat' even though the user mistyped the word.
-• Your spell checker should perform these specific kinds of typo corrections (and only these): - Remove non-letter characters. 'nyl;on' should auto-correct to ‘nylon'
-- Mistyped vowels. 'ceku' should auto-correct to ‘cake'
- */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
 //    removes non-letter characters and corrects mistyped vowels
@@ -125,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
 
 //        update the search field with the cleaned phrase
         textEntryField.setText(word);
