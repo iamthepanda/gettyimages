@@ -17,7 +17,8 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:gravity="center_vertical"
-            android:keepScreenOn="true"/>
+            android:keepScreenOn="true"
+            android:contentDescription="@string/image_from_the_internet"/>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
@@ -44,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onBackButton"
-                android:text="Back"/>
+                android:text="@string/back"/>
 
         </LinearLayout>
     </FrameLayout>

@@ -24,14 +24,14 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/text_entry_field"
-            android:hint="Search images (e.g. cats, etc..)"
+            android:hint="@string/search_images_e_g_cats_etc"
             android:inputType="text"
             android:maxLines="1"
             android:imeOptions="actionDone"
             android:layout_weight="6"/>
 
         <Button
-            android:text="Go"
+            android:text="@string/go"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/request_results"
