@@ -17,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    //    declare variables for existing xml elements
+    //    variables for existing xml elements
     EditText textEntryField;
     Button requestResults;
     GridLayout imageGrid;
+
+    Words dictionary;
 
 
     @Override
@@ -28,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        instantiate xml variables
         textEntryField = (EditText) findViewById(R.id.text_entry_field);
         requestResults = (Button) findViewById(R.id.request_results);
         imageGrid = (GridLayout) findViewById(R.id.image_grid);
+
+//        initialize word list
+        dictionary = new Words();
     }
 
     @Override
@@ -83,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
     public String spellchecker(String word){
 //        remove non-letter characters
         word =  word.replaceAll("[^a-zA-Z]", "");
-
-//        initialize word list
-        Words dictionary = new Words();
 
 //        only perform vowel correction if mistyped word is not in the dictionary
         if(!dictionary.wordSet.contains(word)){
